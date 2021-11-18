@@ -21,6 +21,11 @@ const Home = (): JSX.Element => {
     console.log(allTodo);
     setTodos({todo: '', date: ''});
   };
+
+  const handleDelete = (todo: string) => {
+    const newTodoList = allTodo.filter((name) => name.todo !== todo);
+    setAllTodo(newTodoList);
+  };
   return (
     <div className="container mt-5">
       <input
@@ -41,7 +46,12 @@ const Home = (): JSX.Element => {
         <h3>List of ToDos</h3>
       </div>
       {allTodo.map((todo) => (
-        <TodoList name={todo.todo} date={todo.date} key={todo.todo}></TodoList>
+        <TodoList
+          name={todo.todo}
+          date={todo.date}
+          key={todo.todo}
+          handleDelete={handleDelete}
+        ></TodoList>
       ))}
     </div>
   );
