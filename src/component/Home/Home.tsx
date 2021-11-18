@@ -17,9 +17,11 @@ const Home = (): JSX.Element => {
     // console.log(todos);
   };
   const handleClick = () => {
-    setAllTodo([...allTodo, todos]);
-    console.log(allTodo);
-    setTodos({todo: '', date: ''});
+    if (todos.todo !== '') {
+      setAllTodo([...allTodo, todos]);
+      console.log(allTodo);
+      setTodos({todo: '', date: ''});
+    }
   };
 
   const handleDelete = (todo: string) => {
